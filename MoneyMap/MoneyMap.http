@@ -1,0 +1,6 @@
+@MoneyMap_HostAddress = http://localhost:5174
+
+GET {{MoneyMap_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
