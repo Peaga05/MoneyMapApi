@@ -1,8 +1,3 @@
-Descrição do Projeto
-API RESTful com ASP.NET Core e SQL Server
-
-Descrição do Projeto
-
 Esta é uma API RESTful desenvolvida em ASP.NET Core, projetada para atender às necessidades modernas de aplicações robustas e escaláveis. A API utiliza o SQL Server como banco de dados relacional para armazenamento de informações e JWT (JSON Web Token) para autenticação, garantindo segurança e controle de acesso nas operações realizadas.
 
 Tecnologias Utilizadas
