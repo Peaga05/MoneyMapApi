@@ -3,14 +3,14 @@
     public class FullEntity
     {
         public Guid Id { get; set; }
-        public bool Ativo { get; set; }
-        public DateTime DataCriacao { get; set; }
-        public DateTime? DataDesativacao { get; set; }
+        public bool Active { get; set; }
+        public DateTime CreationTime { get; set; }
+        public DateTime? DeletionTime { get; set; }
 
         public FullEntity()
         {
-            Ativo = true;
-            DataCriacao = DateTime.Now;
+            Active = true;
+            CreationTime = DateTime.Now;
             Id = Guid.NewGuid();
         }
     }

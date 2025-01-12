@@ -18,16 +18,16 @@ namespace Infrastructure.Repository
 
         public void DeActive(T entity)
         {
-            entity.Ativo = false;
-            entity.DataDesativacao = DateTime.Now;
+            entity.Active = false;
+            entity.DeletionTime = DateTime.Now;
             _dbSet.Update(entity);
             _context.SaveChanges();
         }
 
         public void Active(T entity)
         {
-            entity.Ativo = true;
-            entity.DataDesativacao = null;
+            entity.Active = true;
+            entity.DeletionTime = null;
             _dbSet.Update(entity);
             _context.SaveChanges();
         }

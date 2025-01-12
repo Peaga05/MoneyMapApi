@@ -1,39 +1,43 @@
 ﻿using Application.Usuarios;
 using Application.Usuarios.Dtos;
 using Domain.Base.PagedResult;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MoneyMap.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsuarioController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly IUsuarioAppService _usuarioService;
+        private readonly IUserAppService _userService;
 
-        public UsuarioController(IUsuarioAppService usuarioService)
+        public UserController(IUserAppService userService)
         {
-            _usuarioService = usuarioService;
+            _userService = userService;
         }
 
+        [Authorize]
         [HttpGet("GetById/{id}")]
-        public async Task<UsuarioDto?> GetById(Guid id)
+        public async Task<UserDto?> GetById(Guid id)
         {
-            return await _usuarioService.GetById(id);
+            return await _userService.GetById(id);
         }
 
+        [Authorize]
         [HttpPost("GetAll")]
-        public PagedResultDto<UsuarioDto> GetAll(SearchUsuarioDto input)
+        public PagedResultDto<UserDto> GetAll(SearchUserDto input)
         {
-            return _usuarioService.GetAll(input);
+            return _userService.GetAll(input);
         }
 
+        [AllowAnonymous]
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(CreateUsuarioDto usuarioDto)
+        public async Task<IActionResult> Create(CreateUserDto usuarioDto)
         {
             try
             {
-                await _usuarioService.Create(usuarioDto);
+                await _userService.Create(usuarioDto);
                 return Ok();
             }
             catch (Exception ex)
@@ -42,18 +46,20 @@ namespace MoneyMap.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("Update")]
-        public async Task<UsuarioDto> Update(UpdateUsuarioDto usuarioDto)
+        public async Task<UserDto> Update(UpdateUserDto usuarioDto)
         {
-            return await _usuarioService.Update(usuarioDto);
+            return await _userService.Update(usuarioDto);
         }
 
+        [Authorize]
         [HttpDelete("Delete")]
         public IActionResult Delete(Guid id)
         {
             try
             {
-                _usuarioService.Delete(id);
+                _userService.Delete(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -62,12 +68,13 @@ namespace MoneyMap.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("Active/{id}")]
         public IActionResult Active(Guid id)
         {
             try
             {
-                _usuarioService.Active(id);
+                _userService.Active(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -76,12 +83,13 @@ namespace MoneyMap.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("Deactive/{id}")]
         public IActionResult DeActive(Guid id)
         {
             try
             {
-                _usuarioService.DeActive(id);
+                _userService.DeActive(id);
                 return Ok();
             }
             catch (Exception ex)
